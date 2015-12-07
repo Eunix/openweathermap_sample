@@ -4,3 +4,7 @@ h1 Find weather information
   = text_field_tag 'country'
   = text_field_tag 'city'
   = submit_tag 'Find'
+
+- if @weather
+  h2 City info
+  = @weather.info['main']['temp']
