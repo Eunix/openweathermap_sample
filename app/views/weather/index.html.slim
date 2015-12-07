@@ -1,0 +1,6 @@
+h1 Find weather information
+
+= form_tag(weather_index_path, method: :get) do
+  = text_field_tag 'country'
+  = text_field_tag 'city'
+  = submit_tag 'Find'
