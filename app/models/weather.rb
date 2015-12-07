@@ -13,6 +13,18 @@ class Weather
     openweathermap.to_h['main'].to_h['humidity']
   end
 
+  def pressure
+    openweathermap.to_h['main'].to_h['pressure']
+  end
+
+  def wind
+    openweathermap.to_h['wind'].to_h['speed']
+  end
+
+  def clouds
+    openweathermap.to_h['clouds'].to_h['all']
+  end
+
   def fetched?
     !temperature.nil?
   end
