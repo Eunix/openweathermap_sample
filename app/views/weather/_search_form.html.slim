@@ -1,0 +1,7 @@
+= form_tag(weather_index_path, method: :get) do
+  .row
+    .medium-6.columns
+      = select_tag 'country', 
+        options_from_collection_for_select(ISO3166::Country.all, 'alpha2', 'name', params[:country])
+    .medium-6.columns
+      = text_field_tag 'city', params[:city]

@@ -6,13 +6,21 @@ class Weather
   attr_accessor :country, :city
 
   def temperature
-    openweathermap['main']['temp']
+    openweathermap.to_h['main'].to_h['temp']
+  end
+
+  def humidity
+    openweathermap.to_h['main'].to_h['humidity']
+  end
+
+  def fetched?
+    !temperature.nil?
   end
 
   private
 
   def openweathermap
-    JSON.load(open("#{openweathermap_url}&q=#{city},#{country}&units=metric"))
+    @openweathermap ||= JSON.load(open("#{openweathermap_url}&q=#{city},#{country}&units=metric"))
   end
 
   def openweathermap_url

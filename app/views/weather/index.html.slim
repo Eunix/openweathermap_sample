@@ -1,10 +1,13 @@
-h1 Find weather information
+h1 Weather in any city
 
-= form_tag(weather_index_path, method: :get) do
-  = select_tag 'country', options_from_collection_for_select(ISO3166::Country.all, 'alpha2', 'name', params[:country])
-  = text_field_tag 'city', params[:city]
-  = submit_tag 'Find'
+.search_form
+  = render 'search_form'
 
-- if @weather
-  h2 City info
-  = @weather.temperature
+.info
+  - if @weather 
+    - if @weather.fetched?
+      = render 'info'
+    - else
+      .alert-box.info[data-alert]
+        | No information for #{@weather.city}
+        a[href='#' class='close'] &times;

@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'config'
 gem 'slim-rails'
 gem 'countries'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'pry-byebug'
