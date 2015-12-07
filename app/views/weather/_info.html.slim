@@ -1,19 +1,17 @@
 h2 Weather in #{@weather.city}, #{@weather.country}
 
 table
-  tbody
+  thead
     tr
       th Temperature 
-      td = @weather.temperature
-    tr
       th Pressure
-      td = @weather.pressure
-    tr
       th Humidity
-      td = @weather.humidity
-    tr
       th Wind Speed
-      td = @weather.wind
-    tr
       th Clouds
+  tbody
+    tr
+      td = @weather.temperature
+      td = @weather.pressure
+      td = @weather.humidity
+      td = @weather.wind
       td = @weather.clouds
