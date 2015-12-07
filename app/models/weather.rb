@@ -25,16 +25,19 @@ class Weather
     openweathermap.to_h['clouds'].to_h['all']
   end
 
+  # Returns false if no info was fetched
   def fetched?
     !temperature.nil?
   end
 
   private
 
+  # Fetches openweathermap JSON using API http://openweathermap.org/api
   def openweathermap
     @openweathermap ||= JSON.load(open("#{openweathermap_url}&q=#{city},#{country}&units=metric"))
   end
 
+  # Openweathermap URL from Settings
   def openweathermap_url
     "#{Settings.openweathermap.uri}?APPID=#{Settings.openweathermap.api_token}"
   end
