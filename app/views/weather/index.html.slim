@@ -1,10 +1,10 @@
 h1 Find weather information
 
 = form_tag(weather_index_path, method: :get) do
-  = text_field_tag 'country'
-  = text_field_tag 'city'
+  = select_tag 'country', options_from_collection_for_select(ISO3166::Country.all, 'alpha2', 'name', params[:country])
+  = text_field_tag 'city', params[:city]
   = submit_tag 'Find'
 
 - if @weather
   h2 City info
-  = @weather.info['main']['temp']
+  = @weather.temperature

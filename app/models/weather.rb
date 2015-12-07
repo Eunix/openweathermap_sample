@@ -5,11 +5,17 @@ class Weather
 
   attr_accessor :country, :city
 
-  def info
-    JSON.load(
-      open(
-        "#{Settings.openweathermap.uri}?APPID=#{Settings.openweathermap.api_token}&q=#{city},#{country}&units=metric"
-      )
-    )
+  def temperature
+    openweathermap['main']['temp']
+  end
+
+  private
+
+  def openweathermap
+    JSON.load(open("#{openweathermap_url}&q=#{city},#{country}&units=metric"))
+  end
+
+  def openweathermap_url
+    "#{Settings.openweathermap.uri}?APPID=#{Settings.openweathermap.api_token}"
   end
 end
